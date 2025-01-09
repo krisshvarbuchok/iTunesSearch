@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import requestSlice from './slice//requestSlice';
 import isActiveRequestSlice from './slice/isActiveRequestSlice';
 import listSlice from './slice/listSlice';
+import mediaRequestSlice from './slice/mediaRequestSlice';
 
 
 export const store = configureStore({
@@ -9,6 +10,7 @@ export const store = configureStore({
         request: requestSlice,    
         isActiveRequest: isActiveRequestSlice,
         list: listSlice,
+        media: mediaRequestSlice,
     }
 })
 

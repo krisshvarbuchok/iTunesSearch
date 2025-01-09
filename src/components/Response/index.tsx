@@ -1,5 +1,3 @@
-//результаты поиска видео с поисовой строкой
-
 import { FC } from "react";
 import { useAppSelector } from "../../hooks/hools";
 
@@ -7,6 +5,7 @@ export const Response: FC = () => {
 
     const list = useAppSelector(state => state.list.list);
     console.log('list', list);
+    const media = useAppSelector(state => state.media)
 
 
     return (
@@ -18,10 +17,15 @@ export const Response: FC = () => {
                     <p>{item.trackName}</p>
                     <p>{item.country}</p>
                     {/* <p>{item.wrapperType}</p> */}
-                    <audio controls>
+                    {media === 'music' && <audio controls>
                         <source src={item.previewUrl} type="audio/mpeg" />
                         Your browser does not support the audio element.
-                    </audio>
+                    </audio>}
+                    {media === 'movie' && <video controls>
+                        <source src={item.previewUrl} type="video/mp4" />
+                        Your browser does not support the audio element.
+                    </video>}
+
                 </li>
             })}
         </div>

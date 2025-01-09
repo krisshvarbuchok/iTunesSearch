@@ -8,9 +8,9 @@ type ApiResponse = {
     resultCount: number;
   }
  
-  const getRequest = async (request: string): Promise<ApiResponse> => {
+  const getRequest = async (request: string, media: string): Promise<ApiResponse> => {
     try {
-      const response = await axios.get<ApiResponse>(`${import.meta.env.VITE_API_BASE_URL}term=${request}&media=music`);
+      const response = await axios.get<ApiResponse>(`${import.meta.env.VITE_API_BASE_URL}term=${request}&media=${media}`);
       console.log(`${import.meta.env.VITE_API_BASE_URL}term=${request}&media=music`);
       
       return response.data;
@@ -19,11 +19,11 @@ type ApiResponse = {
       throw error;
     }
   };
-const getRequestAsync = createAppAsyncThunk<ListType[], string>(
+const getRequestAsync = createAppAsyncThunk<ListType[], { request: string, media: string }>(
     'request/getRequestAsync',
-    async (request: string, { rejectWithValue }) => {
+    async ({ request, media }, { rejectWithValue }) => {
         try {
-            const data = await getRequest(request);
+            const data = await getRequest(request, media);
             console.log('data', data.results);
             return data.results;
         } catch (error: any) {

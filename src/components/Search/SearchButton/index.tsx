@@ -4,21 +4,23 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/hools";
 import { isActiveRequest } from "../../../redux/slice/isActiveRequestSlice";
 import { getRequestAsync } from "../../../redux/slice/listSlice";
 import { removeRequest } from "../../../redux/slice/requestSlice";
+import { editRequests } from "../../../helper/editRequests";
 
 
 export const SearchButton: FC = () => {
     const navigate = useNavigate();
     const request = useAppSelector(state => state.request);
+    const media = useAppSelector(state => state.media);
     const dispatch = useAppDispatch();
 
 
     const handleClick = () => {
         if (request.trim() !== '') {
             console.log(request);
-            dispatch(getRequestAsync(request))
+            dispatch(getRequestAsync({ request: editRequests(request), media: media }))
             dispatch(isActiveRequest(true));
             navigate('/response');
-        }else {
+        } else {
             dispatch(isActiveRequest(false));
             dispatch(removeRequest());
             navigate('/');
@@ -26,8 +28,6 @@ export const SearchButton: FC = () => {
     }
 
     return (
-        <>
-            <button onClick={handleClick}>Search</button>
-        </>
+        <button onClick={handleClick}>Search</button>
     )
 }
