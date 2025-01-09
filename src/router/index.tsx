@@ -9,6 +9,7 @@ export const RouterComponent: FC = () => {
         <Routes>
             <Route path='/' element={<MainPage />}/>
             <Route path='/response' element={<ResponsePage />}/>
+            <Route path='*' element={<MainPage />}/>
         </Routes>
     )
 }
