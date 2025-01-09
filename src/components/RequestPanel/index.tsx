@@ -1,6 +1,6 @@
 import { ChangeEvent, FC } from "react";
-import { useAppDispatch, useAppSelector } from "../../../hooks/hools";
-import { changeMediaRequest } from "../../../redux/slice/mediaRequestSlice";
+import { useAppDispatch, useAppSelector } from "../../hooks/hools";
+import { changeMediaRequest } from "../../redux/slice/mediaRequestSlice";
 
 export const RequestPanel: FC = () => {
     const media = useAppSelector(state => state.media);

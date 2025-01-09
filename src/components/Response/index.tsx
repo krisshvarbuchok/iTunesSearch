@@ -10,6 +10,7 @@ export const Response: FC = () => {
 
     return (
         <div>
+            {list === null && <div>здесь будет ваш запрос</div>}
             {list?.map(item => {
                 return <li key={item.trackId}>
                     <img src={item.artworkUrl30} />

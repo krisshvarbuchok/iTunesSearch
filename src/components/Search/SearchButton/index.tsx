@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hools";
-import { isActiveRequest } from "../../../redux/slice/isActiveRequestSlice";
+import { changeActiveButton } from "../../../redux/slice/isActiveButtonSlice";
 import { getRequestAsync } from "../../../redux/slice/listSlice";
 import { removeRequest } from "../../../redux/slice/requestSlice";
 import { editRequests } from "../../../helper/editRequests";
@@ -18,16 +18,16 @@ export const SearchButton: FC = () => {
         if (request.trim() !== '') {
             console.log(request);
             dispatch(getRequestAsync({ request: editRequests(request), media: media }))
-            dispatch(isActiveRequest(true));
+            dispatch(changeActiveButton('request'));
             navigate('/response');
         } else {
-            dispatch(isActiveRequest(false));
+            dispatch(changeActiveButton('search'));
             dispatch(removeRequest());
             navigate('/');
         }
     }
 
     return (
-        <button onClick={handleClick}>Search</button>
+        <button className="ml-2 px-4 py-1.5 bg-[#fa1e4e] text-white text-sm font-medium rounded-md hover:bg-[#d0173c] focus:outline-none" onClick={handleClick}>Search</button>
     )
 }

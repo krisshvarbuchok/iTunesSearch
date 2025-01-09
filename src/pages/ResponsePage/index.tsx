@@ -2,7 +2,7 @@ import { FC } from "react"
 import { Response } from "../../components/Response"
 import { SearchButton } from "../../components/Search/SearchButton"
 import { SearchInput } from "../../components/Search/SearchInput"
-import { RequestPanel } from "../../components/Panels/RequestPanel"
+import { RequestPanel } from "../../components/RequestPanel"
 
 export const ResponsePage: FC = () => {
 

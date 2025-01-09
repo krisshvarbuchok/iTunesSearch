@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import requestSlice from './slice//requestSlice';
-import isActiveRequestSlice from './slice/isActiveRequestSlice';
+import isActiveButtonSlice from './slice/isActiveButtonSlice';
 import listSlice from './slice/listSlice';
 import mediaRequestSlice from './slice/mediaRequestSlice';
 
@@ -8,7 +8,7 @@ import mediaRequestSlice from './slice/mediaRequestSlice';
 export const store = configureStore({
     reducer: {
         request: requestSlice,    
-        isActiveRequest: isActiveRequestSlice,
+        isActiveButton: isActiveButtonSlice,
         list: listSlice,
         media: mediaRequestSlice,
     }
