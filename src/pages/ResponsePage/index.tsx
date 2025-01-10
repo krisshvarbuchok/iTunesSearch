@@ -9,7 +9,7 @@ export const ResponsePage: FC = () => {
     return (
         <>
             <div>
-                <div>
+                <div className="flex justify-center items-center  mt-6">
                     <SearchInput />
                     <SearchButton />
                 </div>

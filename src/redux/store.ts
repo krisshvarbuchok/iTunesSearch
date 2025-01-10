@@ -3,6 +3,7 @@ import requestSlice from './slice//requestSlice';
 import isActiveButtonSlice from './slice/isActiveButtonSlice';
 import listSlice from './slice/listSlice';
 import mediaRequestSlice from './slice/mediaRequestSlice';
+import kindOfSearchSlice from './slice/kindOfSearchSlice';
 
 
 export const store = configureStore({
@@ -11,6 +12,7 @@ export const store = configureStore({
         isActiveButton: isActiveButtonSlice,
         list: listSlice,
         media: mediaRequestSlice,
+        kindOfSearch: kindOfSearchSlice,
     }
 })
 

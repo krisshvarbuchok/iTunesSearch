@@ -5,6 +5,7 @@ import { changeActiveButton } from "../../../redux/slice/isActiveButtonSlice";
 import { getRequestAsync } from "../../../redux/slice/listSlice";
 import { removeRequest } from "../../../redux/slice/requestSlice";
 import { editRequests } from "../../../helper/editRequests";
+import { changeKindOfSearch } from "../../../redux/slice/kindOfSearchSlice";
 
 
 export const SearchButton: FC = () => {
@@ -20,6 +21,7 @@ export const SearchButton: FC = () => {
             dispatch(getRequestAsync({ request: editRequests(request), media: media }))
             dispatch(changeActiveButton('request'));
             navigate('/response');
+            dispatch(changeKindOfSearch(media))
         } else {
             dispatch(changeActiveButton('search'));
             dispatch(removeRequest());
@@ -28,6 +30,6 @@ export const SearchButton: FC = () => {
     }
 
     return (
-        <button className="ml-2 px-4 py-1.5 bg-[#fa1e4e] text-white text-sm font-medium rounded-md hover:bg-[#d0173c] focus:outline-none" onClick={handleClick}>Search</button>
+        <button className="ml-2 px-4 py-2 bg-[#fa1e4e] text-white text-sm font-medium rounded-md hover:bg-[#d0173c] focus:outline-none" onClick={handleClick}>Search</button>
     )
 }

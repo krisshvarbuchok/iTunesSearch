@@ -6,19 +6,19 @@ import { createSlice } from "@reduxjs/toolkit"
 type ApiResponse = {
     results: ListType[];
     resultCount: number;
-  }
- 
-  const getRequest = async (request: string, media: string): Promise<ApiResponse> => {
+}
+
+const getRequest = async (request: string, media: string): Promise<ApiResponse> => {
     try {
-      const response = await axios.get<ApiResponse>(`${import.meta.env.VITE_API_BASE_URL}term=${request}&media=${media}`);
-      console.log(`${import.meta.env.VITE_API_BASE_URL}term=${request}&media=music`);
-      
-      return response.data;
+        const response = await axios.get<ApiResponse>(`${import.meta.env.VITE_API_BASE_URL}term=${request}&media=${media}`);
+        console.log(`${import.meta.env.VITE_API_BASE_URL}term=${request}&media=music`);
+
+        return response.data;
     } catch (error) {
-      console.error("Ошибка API запроса:", error);
-      throw error;
+        console.error("Ошибка API запроса:", error);
+        throw error;
     }
-  };
+};
 const getRequestAsync = createAppAsyncThunk<ListType[], { request: string, media: string }>(
     'request/getRequestAsync',
     async ({ request, media }, { rejectWithValue }) => {
@@ -42,6 +42,8 @@ type ListType = {
     collectionExplicitness: string;
     collectionHdPrice: number;
     collectionPrice: number;
+    collectionName?: string;
+    collectionViewUrl?: string;
     contentAdvisoryRating: string;
     country: string;
     currency: string;
@@ -63,6 +65,7 @@ type ListType = {
     trackTimeMillis: number;
     trackViewUrl: string;
     wrapperType: string;
+    collectionId?: number;
 }
 
 const initialState = {
@@ -77,9 +80,12 @@ const listSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
+            .addCase(getRequestAsync.pending, (state) => {
+                state.isLoading = true;
+            })
             .addCase(getRequestAsync.fulfilled, (state, action) => {
                 //console.log('action.payload', action.payload);
-
+                state.isLoading = false;
                 state.list = action.payload;
             })
     }

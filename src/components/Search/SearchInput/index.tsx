@@ -19,10 +19,9 @@ export const SearchInput: FC = () => {
         <input 
           value={request} 
           onChange={handleChange} 
-          className="flex-grow py-1.5 pl-1 pr-3 text-base text-gray-100 placeholder:text-gray-400 bg-gray-900 focus:outline-none focus:ring-0 sm:text-sm" 
-          placeholder="What are we going to listen to?" 
+          className="flex-grow py-2 pl-1 pr-3 text-base text-gray-100 placeholder:text-gray-400 placeholder:sm:text-xs placeholder:md:text-sm bg-gray-900 focus:outline-none focus:ring-0 sm:text-sm " 
+          placeholder="Search..." 
         />
-      
       </div>
       
     )

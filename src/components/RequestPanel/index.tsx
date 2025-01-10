@@ -12,7 +12,7 @@ export const RequestPanel: FC = () => {
     };
 
     return (
-        <>
+        <div className="flex justify-center mt-4">
             
             <div>
                 <input
@@ -22,11 +22,15 @@ export const RequestPanel: FC = () => {
                     value="all"
                     checked={media === 'all'}
                     onChange={handleCheckboxChange}
-                    // style={{ display: 'none' }}
+                    style={{ display: 'none' }}
                 />
-                <label htmlFor="all">
-                    <img src="/all.svg" alt="All" width='30px'/>
-                    All
+                <label htmlFor="all"
+                className={`flex flex-col items-center border-2 rounded-md w-16 h-16 text-white font-medium cursor-pointer ${
+                    media === 'all' ? "border-[#fa1e4e]" : "border-transparent"
+                  } p-2`}
+                  >
+                    <img className=" text-[#fa1e4e]" src="/all.svg" alt="All" width='30px'/>
+                   <span>All</span> 
                 </label>
             </div>
             <div>
@@ -37,28 +41,17 @@ export const RequestPanel: FC = () => {
                     value="music"
                     checked={media === 'music'}
                     onChange={handleCheckboxChange}
-                    // style={{ display: 'none' }}
+                    style={{ display: 'none' }}
                 />
-                <label htmlFor="music">
-                    <img src="/music.svg" alt="Music" width='30px'/>
-                    Music
+                <label htmlFor="music"
+                className={`flex flex-col items-center border-2 rounded-md w-16 h-16 text-white font-medium cursor-pointer ${
+                    media === 'music' ? "border-[#fa1e4e]" : "border-transparent"
+                  } p-2`}
+                  >
+                    <img className=" text-[#fa1e4e]" src="/music.svg" alt="Music" width='30px'/>
+                   <span>Music</span> 
                 </label>
             </div>
-            {/* <div>
-                <input
-                    type="radio"
-                    id="audiobook"
-                    name="drone"
-                    value="audiobook"
-                    checked={media === 'audiobook'}
-                    onChange={handleCheckboxChange}
-                    // style={{ display: 'none' }}
-                />
-                <label htmlFor="audiobook">
-                    <img src="/audiobook.svg" alt="audiobook" width='30px'/>
-                    Audiobook
-                </label>
-            </div> */}
             <div>
                 <input
                     type="radio"
@@ -67,28 +60,17 @@ export const RequestPanel: FC = () => {
                     value="movie"
                     checked={media === 'movie'}
                     onChange={handleCheckboxChange}
-                    // style={{ display: 'none' }}
+                    style={{ display: 'none' }}
                 />
-                <label htmlFor="movie">
-                    <img src="/movie.svg" alt="movie" width='30px'/>
-                    Movie
+                <label htmlFor="movie"
+                className={`flex flex-col items-center border-2 rounded-md w-16 h-16 text-white font-medium cursor-pointer ${
+                    media === 'movie' ? "border-[#fa1e4e]" : "border-transparent"
+                  } p-2`}
+                >
+                    <img className=" text-[#fa1e4e]" src="/movie.svg" alt="Movie" width='30px'/>
+                    <span>Movie</span>
                 </label>
             </div>
-            {/* <div>
-                <input
-                    type="radio"
-                    id="podcast"
-                    name="drone"
-                    value="podcast"
-                    checked={media === 'podcast'}
-                    onChange={handleCheckboxChange}
-                    // style={{ display: 'none' }}
-                />
-                <label htmlFor="podcast">
-                    <img src="/podcast.svg" alt="podcast" width='30px'/>
-                    Podcast
-                </label>
-            </div> */}
-        </>
+        </div>
     );
 };

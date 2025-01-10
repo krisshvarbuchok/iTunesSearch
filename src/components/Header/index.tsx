@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/hools";
 import { changeActiveButton } from "../../redux/slice/isActiveButtonSlice";
@@ -8,6 +8,10 @@ export const Header: FC = () => {
     const isActiveButton = useAppSelector(state => state.isActiveButton);
     const dispatch = useAppDispatch();
 
+    useEffect(()=>{
+        navigate('/')
+    }, [])
+    
     const handleClick = (nav: string, style: string) => {
         navigate(`${nav}`);
         dispatch(changeActiveButton(style));
