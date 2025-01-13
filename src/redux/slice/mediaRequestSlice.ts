@@ -6,8 +6,8 @@ const mediaRequestSlice = createSlice({
     name: 'media',
     initialState,
     reducers: {
-        changeMediaRequest: (state, action: PayloadAction<string>) => {
-            return state = action.payload;
+        changeMediaRequest: (_, action: PayloadAction<string>) => {
+            return action.payload;
         }
     },
 

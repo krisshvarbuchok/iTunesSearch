@@ -7,8 +7,8 @@ const kindOfSearchSlice = createSlice({
     name: 'request',
     initialState,
     reducers: {
-        changeKindOfSearch: (state, action: PayloadAction<string>) => {
-            return state = action.payload;
+        changeKindOfSearch: (_, action: PayloadAction<string>) => {
+            return action.payload;
         }
     }
 })

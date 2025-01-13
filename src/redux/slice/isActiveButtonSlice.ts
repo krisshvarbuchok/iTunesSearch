@@ -7,8 +7,8 @@ const isActiveButtonSlice = createSlice({
     name: 'isActiveRequest',
     initialState,
     reducers: {
-        changeActiveButton: (state, action: PayloadAction<string>) => {
-            return state = action.payload;
+        changeActiveButton: (_, action: PayloadAction<string>) => {
+            return action.payload;
         }
     }
 })
