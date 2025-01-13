@@ -4,16 +4,16 @@ import { formatTime } from "../../../../helper/formatTime";
 
 type PropsType = {
     currentTrackUrl: string | null;
-    isPlaying: boolean; 
+    isPlaying: boolean;
     handlePause: () => void;
     handlePlay: (trackId: number, previewUrl: string) => void;
-    currentTrack: number | null; 
+    currentTrack: number | null;
     audioRef: MutableRefObject<HTMLAudioElement | null>;
 }
 
-export const Player: FC<PropsType> = ({currentTrackUrl, isPlaying, handlePause, handlePlay, currentTrack, audioRef}) => {
-        const list = useAppSelector(state => state.list.list);
-  const [currentTime, setCurrentTime] = useState(0);
+export const Player: FC<PropsType> = ({ currentTrackUrl, isPlaying, handlePause, handlePlay, currentTrack, audioRef }) => {
+    const list = useAppSelector(state => state.list.list);
+    const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
 
     useEffect(() => {
@@ -27,7 +27,7 @@ export const Player: FC<PropsType> = ({currentTrackUrl, isPlaying, handlePause, 
 
     return (
         <>
-          {currentTrackUrl && (
+            {currentTrackUrl && (
                 <div className="fixed bottom-0 left-0 w-full bg-gray-900 text-white flex items-center justify-center border-t-2 border-[#fa1e4e] px-4 py-4 h-16">
                     <div className="flex items-center">
                         <button
@@ -39,11 +39,11 @@ export const Player: FC<PropsType> = ({currentTrackUrl, isPlaying, handlePause, 
                         >
                             {isPlaying ? (
                                 <span className="material-icons">
-                                    <img src="/pause.svg"  className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" alt="Pause" />
+                                    <img src="/pause.svg" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" alt="Pause" />
                                 </span>
                             ) : (
                                 <span className="material-icons">
-                                    <img src="/play.svg"  className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" alt="Play" />
+                                    <img src="/play.svg" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" alt="Play" />
                                 </span>
                             )}
                         </button>
@@ -97,7 +97,7 @@ export const Player: FC<PropsType> = ({currentTrackUrl, isPlaying, handlePause, 
                 </div>
             )}
 
-        
+
         </>
     )
 }

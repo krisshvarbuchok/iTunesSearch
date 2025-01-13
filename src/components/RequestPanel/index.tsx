@@ -8,7 +8,7 @@ export const RequestPanel: FC = () => {
     const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         dispatch(changeMediaRequest(value));
-        console.log(`Selected: ${value}`);
+        //console.log(`Selected: ${value}`);
     };
 
     return (

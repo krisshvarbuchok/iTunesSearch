@@ -18,7 +18,7 @@ export const Search :FC = () => {
 
     const handleClick = ():void => {
         if (request.trim() !== '') {
-            console.log(request);
+            //console.log(request);
             dispatch(getRequestAsync({ request: editRequests(request), media: media }))
             dispatch(changeActiveButton('request'));
             navigate('/response');

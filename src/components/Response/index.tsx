@@ -6,10 +6,10 @@ import { ResponseMovie } from "./ResponseMovie";
 
 export const Response: FC = () => {
     const isLoading = useAppSelector(state => state.list.isLoading);
-    console.log(isLoading);
+    //console.log(isLoading);
     
     const list = useAppSelector(state => state.list.list);
-    console.log('list', list);
+    //console.log('list', list);
     const kindOfSearch = useAppSelector(state => state.kindOfSearch);
   
 
