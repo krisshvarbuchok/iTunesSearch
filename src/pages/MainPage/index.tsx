@@ -1,9 +1,11 @@
 import { FC } from "react";
 import { RequestPanel } from "../../components/RequestPanel";
 import { Search } from "../../components/Search";
+import { useAppSelector } from "../../hooks/hools";
 
 export const MainPage: FC = () => {
-
+    const error = useAppSelector(state => state.list.error);
+    
 
     return (
         <div>
@@ -16,6 +18,7 @@ export const MainPage: FC = () => {
                 
             </div>
             <RequestPanel />
+            {error && <div className="flex justify-center text-red-500 font-bold">{error}</div>}
         </div>
     )
 }

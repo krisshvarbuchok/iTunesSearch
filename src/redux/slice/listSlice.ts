@@ -11,12 +11,16 @@ type ApiResponse = {
 const getRequest = async (request: string, media: string): Promise<ApiResponse> => {
     try {
         const response = await axios.get<ApiResponse>(`${import.meta.env.VITE_API_BASE_URL}term=${request}&media=${media}`);
-        console.log(`${import.meta.env.VITE_API_BASE_URL}term=${request}&media=music`);
-
         return response.data;
-    } catch (error) {
-        console.error("Ошибка API запроса:", error);
-        throw error;
+    } catch (error: any) {
+        if (axios.isAxiosError(error)) {
+            throw {
+                message: error.message,
+                status: error.response?.status,
+                data: error.response?.data,
+            };
+        }
+        throw { message: "Unexpected error occurred", originalError: error };
     }
 };
 const getRequestAsync = createAppAsyncThunk<ListType[], { request: string, media: string }>(
@@ -24,10 +28,9 @@ const getRequestAsync = createAppAsyncThunk<ListType[], { request: string, media
     async ({ request, media }, { rejectWithValue }) => {
         try {
             const data = await getRequest(request, media);
-            console.log('data', data.results);
             return data.results;
         } catch (error: any) {
-            return rejectWithValue(error.response?.data || error.message);
+            return rejectWithValue(error.data || error.message || "An unexpected error occurred");
         }
     }
 );
@@ -71,7 +74,7 @@ type ListType = {
 const initialState = {
     list: null as ListType[] | null,
     isLoading: false,
-    error: null as string | null,
+    error: null as string | null | undefined,
 }
 
 const listSlice = createSlice({
@@ -84,9 +87,14 @@ const listSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(getRequestAsync.fulfilled, (state, action) => {
-                //console.log('action.payload', action.payload);
                 state.isLoading = false;
+                state.error = null;
                 state.list = action.payload;
+            })
+            .addCase(getRequestAsync.rejected, (state, action) => {
+                console.error("Ошибка при загрузке данных:", action.payload);
+                state.isLoading = false;
+                state.error = action.payload;
             })
     }
 })
