@@ -1,7 +1,6 @@
 import { FC } from "react";
-import { SearchInput } from "../../components/Search/SearchInput";
-import { SearchButton } from "../../components/Search/SearchButton";
 import { RequestPanel } from "../../components/RequestPanel";
+import { Search } from "../../components/Search";
 
 export const MainPage: FC = () => {
 
@@ -13,8 +12,7 @@ export const MainPage: FC = () => {
             </h1>
             <div className="flex justify-center items-center w-full">
 
-                <SearchInput />
-                <SearchButton />
+                <Search />
                 
             </div>
             <RequestPanel />

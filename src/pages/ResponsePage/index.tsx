@@ -1,8 +1,7 @@
 import { FC } from "react"
 import { Response } from "../../components/Response"
-import { SearchButton } from "../../components/Search/SearchButton"
-import { SearchInput } from "../../components/Search/SearchInput"
 import { RequestPanel } from "../../components/RequestPanel"
+import { Search } from "../../components/Search"
 
 export const ResponsePage: FC = () => {
 
@@ -10,8 +9,7 @@ export const ResponsePage: FC = () => {
         <>
             <div>
                 <div className="flex justify-center items-center  mt-6">
-                    <SearchInput />
-                    <SearchButton />
+                    <Search />
                 </div>
                 <RequestPanel />
             </div>
