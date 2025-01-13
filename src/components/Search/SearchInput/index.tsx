@@ -12,7 +12,6 @@ export const SearchInput: FC<PropsType> = ({ handleClick }) => {
   const request = useAppSelector(state => state.request);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    //console.log(event.target.value);
     dispatch(addRequest(event.target.value))
   }
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {

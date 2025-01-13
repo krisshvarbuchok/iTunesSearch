@@ -1,11 +1,4 @@
 import { FC } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { useAppDispatch, useAppSelector } from "../../../hooks/hools";
-// import { changeActiveButton } from "../../../redux/slice/isActiveButtonSlice";
-// import { getRequestAsync } from "../../../redux/slice/listSlice";
-// import { removeRequest } from "../../../redux/slice/requestSlice";
-// import { editRequests } from "../../../helper/editRequests";
-// import { changeKindOfSearch } from "../../../redux/slice/kindOfSearchSlice";
 
 type PropsType = {
     handleClick: () => void;
