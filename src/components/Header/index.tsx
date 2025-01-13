@@ -7,6 +7,7 @@ export const Header: FC = () => {
     const navigate = useNavigate();
     const isActiveButton = useAppSelector(state => state.isActiveButton);
     const dispatch = useAppDispatch();
+    
 
     useEffect(()=>{
         navigate('/')

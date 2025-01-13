@@ -1,0 +1,164 @@
+import { FC, useEffect, useRef, useState } from "react";
+import { useAppSelector } from "../../../hooks/hools";
+import { formatTime } from "../../../helper/formatTime";
+
+
+export const ResponseMusic: FC = () => {
+    const list = useAppSelector(state => state.list.list);
+
+    const [currentTrack, setCurrentTrack] = useState<number | null>( null);
+    const [currentTrackUrl, setCurrentTrackUrl] = useState<string | null>( null);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+    const [currentTime, setCurrentTime] = useState(0);
+    const [duration, setDuration] = useState(0);
+
+
+    const handlePlay = (trackId: number, previewUrl: string) => {
+        if (currentTrack === trackId) {
+            // Если трек уже выбран, переключаем воспроизведение
+            if (isPlaying) {
+                audioRef.current?.pause();
+                setIsPlaying(false);
+            } else {
+                audioRef.current?.play();
+                setIsPlaying(true);
+            }
+        } else {
+            // Если трек изменился, обновляем состояние
+            setCurrentTrack(trackId);
+            setCurrentTrackUrl(previewUrl);
+            setIsPlaying(true);
+        }
+    };
+    
+    // Эффект для обработки воспроизведения при изменении текущего URL трека
+    useEffect(() => {
+        if (currentTrackUrl && audioRef.current) {
+            audioRef.current.pause(); // Останавливаем текущий трек
+            audioRef.current.src = currentTrackUrl; // Устанавливаем новый источник
+            audioRef.current.load(); // Загружаем новый трек
+            audioRef.current.play(); // Воспроизводим новый трек
+        }
+    }, [currentTrackUrl]);
+    
+
+    const handlePause = () => {
+        audioRef.current?.pause();
+        setIsPlaying(false);
+    };
+
+
+    return (
+        <div className="flex flex-col items-center w-full">
+            {/* List of Tracks */}
+            <div className="w-full flex flex-col items-center">
+                {list?.map(item => (
+                    <div
+                        key={item.trackId}
+                        onClick={() => handlePlay(item.trackId, item.previewUrl)}
+                        className={`flex items-center pl-3 my-2 w-[95%] sm:w-[70%] h-auto gap-4 bg-gray-800 rounded-md cursor-pointer
+                        ${currentTrack === item.trackId ? "bg-gray-700 border-l-4 border-[#fa1e4e]" : ""}`}
+                    >
+                        <a
+                            className="w-7 flex items-center"
+                            href={item.collectionViewUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <img
+                                src={item.artworkUrl30}
+                                className="rounded"
+                            />
+                        </a>
+                        <div className="ml-1 sm:ml-1 md:ml-3">
+                            <div className="flex flex-col sm:flex-row text-white items-start sm:space-x-2 space-y-2">
+                                <p className="text-left">
+                                    {item.artistName}
+                                    <span> - </span>
+                                    {item.trackName}
+                                </p>
+                            </div>
+                            <div className="text-white flex flex-row">
+                                <p>{item.country}</p>
+                                <span className="mx-2"> • </span>
+                                <p>{item.collectionPrice}$</p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+            {/* Audio Player at the Bottom */}
+            {currentTrackUrl && (
+                <div className="fixed bottom-0 left-0 w-full bg-gray-900 text-white flex items-center justify-center border-t-2 border-[#fa1e4e] px-4 py-4 h-16">
+                    <div className="flex items-center">
+                        <button
+                            onClick={() => {
+                                if (isPlaying) handlePause();
+                                else handlePlay(currentTrack!, currentTrackUrl);
+                            }}
+                            className="mr-4"
+                        >
+                            {isPlaying ? (
+                                <span className="material-icons">
+                                    <img src="/pause.svg"  className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" alt="Pause" />
+                                </span>
+                            ) : (
+                                <span className="material-icons">
+                                    <img src="/play.svg"  className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" alt="Play" />
+                                </span>
+                            )}
+                        </button>
+                    </div>
+                    <div className=" px-4">
+                        <p className="text-sm">
+                            {list?.find(item => item.trackId === currentTrack)?.artistName || "No track playing"}
+                            <span> - </span>
+                            {list?.find(item => item.trackId === currentTrack)?.trackName}
+                        </p>
+                        <input
+                            type="range"
+                            min="0"
+                            max={duration}
+                            value={currentTime}
+                            onChange={(e) => {
+                                if (audioRef.current) {
+                                    audioRef.current.currentTime = Number(e.target.value);
+                                }
+                            }}
+                            className="w-full h-1 appearance-none cursor-pointer bg-gray-600 rounded outline-none accent-[#fa1e4e]"
+
+                        />
+
+
+                    </div>
+                    <div className="flex justify-between px-4 text-xs">
+                        <span>
+                            {formatTime(audioRef.current?.currentTime || 0)}
+                        </span>
+                        <span>/</span>
+                        <span>
+                            {formatTime(audioRef.current?.duration || 0)}
+                        </span>
+                    </div>
+                    <audio
+                        ref={audioRef}
+                        onTimeUpdate={() => {
+                            if (audioRef.current) {
+                                setCurrentTime(audioRef.current.currentTime); // Текущее время трека
+                            }
+                        }}
+                        onLoadedMetadata={() => {
+                            if (audioRef.current) {
+                                setDuration(audioRef.current.duration); // Общая длительность трека
+                            }
+                        }}
+                        className="hidden"
+                    />
+
+                </div>
+            )}
+
+        </div>
+    );
+};

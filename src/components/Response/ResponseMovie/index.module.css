@@ -1,0 +1,17 @@
+.container {
+    transition: max-height 1s linear;
+    overflow: hidden;
+    max-height: 0; 
+}
+
+.open {
+    max-height: 800px; 
+    
+}
+
+.closed {
+    max-height: 0; 
+    padding-bottom: 0;
+}
+
+
