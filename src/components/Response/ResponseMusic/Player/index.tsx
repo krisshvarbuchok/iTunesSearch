@@ -39,11 +39,11 @@ export const Player: FC<PropsType> = ({ currentTrackUrl, isPlaying, handlePause,
                         >
                             {isPlaying ? (
                                 <span className="material-icons">
-                                    <img src="/pause.svg" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" alt="Pause" />
+                                    <img src="/iTunesSearch/pause.svg" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" alt="Pause" />
                                 </span>
                             ) : (
                                 <span className="material-icons">
-                                    <img src="/play.svg" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" alt="Play" />
+                                    <img src="/iTunesSearch/play.svg" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" alt="Play" />
                                 </span>
                             )}
                         </button>

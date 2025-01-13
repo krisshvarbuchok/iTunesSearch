@@ -29,7 +29,7 @@ export const RequestPanel: FC = () => {
                     media === 'all' ? "border-[#fa1e4e]" : "border-transparent"
                   } p-2`}
                   >
-                    <img className=" text-[#fa1e4e]" src="/all.svg" alt="All" width='30px'/>
+                    <img className=" text-[#fa1e4e]" src="/iTunesSearch/all.svg" alt="All" width='30px'/>
                    <span>All</span> 
                 </label>
             </div>
@@ -48,7 +48,7 @@ export const RequestPanel: FC = () => {
                     media === 'music' ? "border-[#fa1e4e]" : "border-transparent"
                   } p-2`}
                   >
-                    <img className=" text-[#fa1e4e]" src="/music.svg" alt="Music" width='30px'/>
+                    <img className=" text-[#fa1e4e]" src="/iTunesSearch/music.svg" alt="Music" width='30px'/>
                    <span>Music</span> 
                 </label>
             </div>
@@ -67,7 +67,7 @@ export const RequestPanel: FC = () => {
                     media === 'movie' ? "border-[#fa1e4e]" : "border-transparent"
                   } p-2`}
                 >
-                    <img className=" text-[#fa1e4e]" src="/movie.svg" alt="Movie" width='30px'/>
+                    <img className=" text-[#fa1e4e]" src="/iTunesSearch/movie.svg" alt="Movie" width='30px'/>
                     <span>Movie</span>
                 </label>
             </div>

@@ -19,7 +19,7 @@ export const ResponseAll: FC = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <img src={item.artworkUrl30 || `/audiobook.svg`} />
+                            <img src={item.artworkUrl30 || `/iTunesSearch/audiobook.svg`} />
 
                         </a>
                         <div className="ml-1 sm:ml-1 md:ml-3">

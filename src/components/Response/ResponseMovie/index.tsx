@@ -47,7 +47,7 @@ export const ResponseMovie: FC = () => {
                                     onClick={() => handleClick(item.trackId)}
                                 >
                                     <img
-                                        src={isOpenId?.includes(item.trackId) ? "/up.svg" : "/down.svg"}
+                                        src={isOpenId?.includes(item.trackId) ? "/iTunesSearch/up.svg" : "/iTunesSearch/down.svg"}
                                         alt="Toggle"
                                     />
                                 </div>

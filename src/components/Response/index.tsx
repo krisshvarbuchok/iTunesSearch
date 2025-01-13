@@ -25,12 +25,12 @@ export const Response: FC = () => {
             {list === null && !isLoading &&
                 <div className=" mt-7 flex flex-col items-center">
                     <p className="text-gray-400">Your request will be here.</p>
-                    <img className=" text-[#fa1e4e] w-9" src="/library.svg" alt="Request" />
+                    <img className=" text-[#fa1e4e] w-9" src="/iTunesSearch/library.svg" alt="Request" />
                 </div>}
                 {list?.length === 0 && !isLoading && 
                 <div className=" mt-7 flex flex-col items-center">
                      <p className="text-gray-400">There is nothing matching your request.</p>
-                     <img className=" text-[#fa1e4e] w-10" src="/empty.svg" alt="Request" />
+                     <img className=" text-[#fa1e4e] w-10" src="/iTunesSearch/empty.svg" alt="Request" />
                 </div>
                 }
             {list?.length !== 0 && !isLoading && kindOfSearch === 'all' && <ResponseAll />}

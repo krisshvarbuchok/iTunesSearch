@@ -25,7 +25,7 @@ export const Header: FC = () => {
                     <div className="flex h-16 items-center justify-between">
                         <div className="flex items-center">
                             <div className="shrink-0">
-                                <img className="w-[40px] text-[#fa1e4e]" src="/logo.svg" alt="Logo" />
+                                <img className="w-[40px] text-[#fa1e4e]" src="/iTunesSearch/logo.svg" alt="Logo" />
                             </div>
                                 <div className="ml-10 flex items-baseline space-x-6">
 
