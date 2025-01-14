@@ -46,17 +46,17 @@ export const ResponseMusic: FC = () => {
                         className={`flex items-center pl-3 my-2 w-[95%] sm:w-[70%] h-auto gap-4 bg-gray-800 rounded-md cursor-pointer
                         ${currentTrack === item.trackId ? "bg-gray-700 border-l-4 border-[#fa1e4e]" : ""}`}
                     >
-                        <a
+                        <div
                             className="w-7 flex items-center"
-                            href={item.collectionViewUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                           // href={item.collectionViewUrl}
+                            //target="_blank"
+                            //rel="noopener noreferrer"
                         >
                             <img
                                 src={item.artworkUrl30}
                                 className="rounded"
                             />
-                        </a>
+                        </div>
                         <div className="ml-1 sm:ml-1 md:ml-3">
                             <div className="flex flex-col sm:flex-row text-white items-start sm:space-x-2 space-y-2">
                                 <p className="text-left">
